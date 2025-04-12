@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "ThreatShield - Advanced Web Protection",
+  "version": "1.1",
+  "description": "Blocks phishing & malicious sites using VirusTotal, OpenPhish & more.",
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "notifications",
+    "activeTab",
+    "tabs",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://www.virustotal.com/*",
+    "https://openphish.com/*",
+    "https://api.abuseipdb.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.webp"
+  },
+  "icons": {
+    "48": "icon.webp"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

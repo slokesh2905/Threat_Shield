@@ -1,0 +1,309 @@
+:root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #ffffff;
+    --text-secondary: #94a3b8;
+    --primary: #8b5cf6;
+    --secondary: #ef4444;
+    --success: #10b981;
+    --border: #2d3748;
+    --progress-bg: rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="light"] {
+    --bg: #ffffff;
+    --card-bg: #f8fafc;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --progress-bg: rgba(139, 92, 246, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    width: 350px;
+    min-height: 500px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.container {
+    padding: 16px;
+    height: 100%;
+    position: relative;
+}
+
+/* Add a subtle shadow to the top edge of the container */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.shield-icon {
+    color: var(--primary);
+}
+
+.theme-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Show sun icon in dark mode */
+.sun-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.moon-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Show moon icon in light mode */
+[data-theme="light"] .sun-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+[data-theme="light"] .moon-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.status-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.status-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.shield-large {
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.status-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.status-header p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.scan-status {
+    margin-bottom: 16px;
+}
+
+.scan-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.scan-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    min-width: 85px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background-color: var(--progress-bg);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 100%;
+    height: 100%;
+    background-color: var(--success);
+    animation: fillProgress 1.5s ease-in-out;
+}
+
+.status-value {
+    color: var(--success);
+    font-size: 14px;
+    min-width: 60px;
+    text-align: right;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.status-icon {
+    color: var(--text-secondary);
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-size: 14px;
+    width: 100%;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-icon {
+    color: currentColor;
+}
+
+.btn.primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn.secondary {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn.tertiary {
+    background-color: var(--success);
+    color: white;
+}
+
+.threats-section {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.threats-section h3 {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.threats-container {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.threat-list {
+    list-style: none;
+}
+
+.threat-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+    word-break: break-all;
+}
+
+.threat-list li:last-child {
+    border-bottom: none;
+}
+
+@keyframes fillProgress {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+} 
